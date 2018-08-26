@@ -19,13 +19,27 @@ class Repository implements RepositoryInterface
     public function fetchAll(Query $query)
     {
         $documents = [];
-        foreach($query->getQ() as $term) {
-            if (isset($this->index[$term]) === true) {
-                foreach($this->index[$term] as $d) {
+        $q = $query->getQ();
+
+        if (count($q) > 0) {
+            foreach($query->getQ() as $term) {
+                if (isset($this->index[$term]) === true) {
+                    foreach($this->index[$term] as $d) {
+                        if (isset($documents[$d]) === false) {
+                            $documents[$d] = 1;
+                        }
+    
+                        $documents[$d] += 1;
+                    }
+                }
+            }
+        } else {
+            foreach($this->index as $index) {
+                foreach($index as $d) {
                     if (isset($documents[$d]) === false) {
                         $documents[$d] = 1;
                     }
-
+    
                     $documents[$d] += 1;
                 }
             }
