@@ -1,0 +1,17 @@
+{
+    "name": "michaelfrandin/json_db",
+    "require-dev": {
+        "phpunit/phpunit": "^6.5.11",
+        "php-mock/php-mock": "^2.0"
+    },
+    "authors": [
+        {
+            "name": "Michael Frandin",
+            "email": "michael.frandin@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": { "Json\\DB\\": "src" }
+    }
+}
