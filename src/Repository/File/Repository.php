@@ -65,7 +65,12 @@ class Repository implements RepositoryInterface
             $contItens += 1;
         }
 
-        return $data;
+        return [
+            'total' => count($documents),
+            'per_page' => $query->getLimit(),
+            'current_page' => $query->getPage(),
+            'data' => $data
+        ];
     }
 
     public function update($id, array $data)

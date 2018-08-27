@@ -10,7 +10,7 @@ class Query implements QueryInterface
 
     private $limit = 10;
 
-    private $offset = 0;
+    private $page = 1;
 
     public function setQ($text)
     {
@@ -29,19 +29,26 @@ class Query implements QueryInterface
         return $this;
     }
 
+
     public function getLimit()
     {
         return $this->limit;
     }
 
-    public function setOffset(int $offset)
+    public function getOffset()
     {
-        $this->offset = $offset;
+        return $this->limit * ($this->page - 1);
+    }
+
+    public function setPage(int $page)
+    {
+        $this->page = $page;
+
         return $this;
     }
 
-    public function getOffset()
+    public function getPage()
     {
-        return $this->offset;
+        return $this->page;
     }
 }
