@@ -44,12 +44,14 @@ class Repository implements RepositoryInterface
                 }
             }
         }
-        
+
         $data = [];
         $cont = 0;
         $contItens = 0;
+        arsort($documents);
         foreach($documents as $ID => $score) {
             if ($cont < $query->getOffset()) {
+                $cont += 1;
                 continue;
             }
 
@@ -57,7 +59,9 @@ class Repository implements RepositoryInterface
                 break;
             }
 
-            $data[] = $this->drive->load($ID);
+            $d = $this->drive->load($ID);
+            $d['@@SCORE'] = $score;
+            $data[] = $d;
             $contItens += 1;
         }
 
