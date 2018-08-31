@@ -4,6 +4,7 @@ namespace Json\DB\Repository\File;
 
 use Json\DB\Repository\RepositoryInterface;
 use Json\DB\Drive\File\Drive;
+use Json\Db\Query;
 
 class Repository implements RepositoryInterface
 {

@@ -2,7 +2,8 @@
 
 namespace Json\DB\Indexes\File;
 
-use  Json\DB\Drive\File\Drive;
+use Json\DB\Drive\File\Drive;
+use Json\DB\Helper\StringHelper;
 
 class Generate
 {
@@ -46,6 +47,7 @@ class Generate
     {
         $v = explode(" ", $value);
         foreach($v as $v1) {
+            $v1 = StringHelper::stripAccents($v1);
             if (isset($this->index[$v1]) === false) {
                 $this->index[$v1] = [];
             }
